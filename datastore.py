@@ -41,3 +41,19 @@ def read(key):
         else:
             json_obj = str(key) + ":" + str(res_value[0])
             return json_obj
+
+
+def delete(key):
+    if key not in data:
+        print("error: entered key doesn't exist in data store. Enter a valid key")
+    else:
+        del_value = data[key]
+        if del_value[1] != 0:
+            if time.time() < del_value[1]:
+                del data[key]
+                print("key successfully deleted")
+            else:
+                print("error: Time-To-Live for", key, "has expired")
+        else:
+            del data[key]
+            print("key successfully deleted")
