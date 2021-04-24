@@ -18,7 +18,8 @@ def create(key, value, timeout=0):
                     if len(key) <= 32:
                         data[key] = data_value
                     else:
-                        print("error: key size should not exceed 32 characters")
+                        print("error: key size should not exceed"
+                            "32 characters")
                 else:
                     print("error: value size should not exceed 16KB")
             else:
@@ -29,7 +30,8 @@ def create(key, value, timeout=0):
 
 def read(key):
     if key not in data:
-        print("error: entered key doesn't exist in data store. Enter a valid key")
+        print("error: entered key doesn't exist in data store."
+            "Enter a valid key")
     else:
         res_value = data[key]
         if res_value[1] != 0:
@@ -45,7 +47,8 @@ def read(key):
 
 def delete(key):
     if key not in data:
-        print("error: entered key doesn't exist in data store. Enter a valid key")
+        print("error: entered key doesn't exist in data store."
+            "Enter a valid key")
     else:
         del_value = data[key]
         if del_value[1] != 0:
