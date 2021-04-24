@@ -25,3 +25,19 @@ def create(key, value, timeout=0):
                 print("error: memory limit exceeded")
         else:
             print("error: key should be a string")
+
+
+def read(key):
+    if key not in data:
+        print("error: entered key doesn't exist in data store. Enter a valid key")
+    else:
+        res_value = data[key]
+        if res_value[1] != 0:
+            if time.time() < res_value[1]:
+                json_obj = str(key) + ":" + str(res_value[0])
+                return json_obj
+            else:
+                print("error: Time-To-Live for", key, "has expired")
+        else:
+            json_obj = str(key) + ":" + str(res_value[0])
+            return json_obj
